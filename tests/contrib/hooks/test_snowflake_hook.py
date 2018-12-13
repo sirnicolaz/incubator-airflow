@@ -67,3 +67,15 @@ class TestSnowflakeHook(unittest.TestCase):
 
     def test_get_conn(self):
         self.assertEqual(self.db_hook.get_conn(), self.conn)
+
+    def test_run_default_autocommit(self):
+        sql = 'SQL'
+        self.db_hook.run(sql)
+        self.conn.autocommit.assert_called_once_with(False)
+        self.conn.execute_string.assert_called_once_with(sql)
+
+    def test_run_autocommit(self):
+        sql = 'SQL'
+        self.db_hook.run(sql, autocommit=True)
+        self.conn.autocommit.assert_called_once_with(True)
+        self.conn.execute_string.assert_called_once_with(sql)

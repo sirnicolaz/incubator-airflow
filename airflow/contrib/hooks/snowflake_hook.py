@@ -18,6 +18,7 @@
 # under the License.
 
 import snowflake.connector
+from contextlib import closing
 
 from airflow.hooks.dbapi_hook import DbApiHook
 
@@ -96,3 +97,24 @@ class SnowflakeHook(DbApiHook):
 
     def set_autocommit(self, conn, autocommit):
         conn.autocommit(autocommit)
+
+    def run(self, sql, autocommit=False, parameters=None):
+        """
+        Runs a command or a list of commands. Pass a list of sql
+        statements to the sql parameter to get them to execute
+        sequentially
+
+        :param sql: the sql statement to be executed (str) or a list of
+            sql statements to execute
+        :type sql: str or list
+        :param autocommit: What to set the connection's autocommit setting to
+            before executing the query.
+        :type autocommit: bool
+        :param parameters: The parameters to render the SQL query with.
+        :type parameters: mapping or iterable
+        """
+        with closing(self.get_conn()) as conn:
+            if self.supports_autocommit:
+                self.log.info('Autocommit set to %r' % autocommit)
+                self.set_autocommit(conn, autocommit)
+            conn.execute_string(sql)
