@@ -310,6 +310,7 @@ Currently **officially** using Airflow:
 1. [T2 Systems](http://t2systems.com) [[@unclaimedpants](https://github.com/unclaimedpants)]
 1. [Ubisoft](https://www.ubisoft.com/) [[@Walkoss](https://github.com/Walkoss)]
 1. [United Airlines](https://www.united.com/) [[@ilopezfr](https://github.com/ilopezfr)]
+1. [Upday](https://www.upday.com) [[@Handtaker23](https://github.com/Handtaker23) & [@sirnicolaz](https://github.com/sirnicolaz)]
 1. [Upsight](https://www.upsight.com)
 1. [VeeR VR](https://veer.tv) [[@pishilong](https://github.com/pishilong)]
 1. [Vente-Exclusive.com](http://www.vente-exclusive.com/) [[@alexvanboxel](https://github.com/alexvanboxel)]
